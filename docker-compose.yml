@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "cutlets"
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    command: "-c logging_collector=on -c log_directory=/db_logs -c log_statement=all"
+    volumes:
+      - ./db_logs:/db_logs
+    ports:
+      - "5432:5432"
