@@ -20,9 +20,6 @@ class MenuMessageListener(
 ) : UpdateListener {
 
     override fun processUpdate(update: Update, bot: CutletsBot, isCallback: Boolean, telegramId: Long, chatId: Long): Boolean {
-        val isCallback = update.message == null && update.callbackQuery != null
-        val telegramId = if (isCallback) update.callbackQuery.from.id else update.message.from.id
-        val chatId = if (isCallback) update.callbackQuery.message.chatId else update.message.chatId
         if (isCallback || !Command.MENU.equals(update.message.text)) {
             return false
         }
